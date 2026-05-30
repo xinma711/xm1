@@ -1,0 +1,26 @@
+[project]
+name = "xm"
+version = "0.1.0"
+description = "Minimal AI agent shell"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.0.0",
+    "httpx>=0.27.0",
+    "click>=8.0.0",
+    "pydantic>=2.0.0",
+    "textual>=8.2.7",
+]
+
+[project.optional-dependencies]
+anthropic = ["anthropic>=0.40.0"]
+server = ["fastapi>=0.115.0", "uvicorn[standard]>=0.30.0"]
+
+[project.scripts]
+xm = "xm.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/xm"]
